@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const messagesController = require("../controllers/messagesController");
+
 const messages = [
   {
     text: "Hi there!",
@@ -15,9 +17,11 @@ const messages = [
 ];
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { messages });
-});
+// router.get("/", function (req, res, next) {
+//   res.render("index", { messages });
+// });
+
+router.get("/", messagesController.getMessages);
 
 router.get("/new", function (req, res) {
   res.render("form");
