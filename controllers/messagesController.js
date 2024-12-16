@@ -5,6 +5,13 @@ async function getMessages(req, res) {
   res.render("index", { messages });
 }
 
+async function createMessage(req, res) {
+  const { username, text } = req.body;
+  await db.createMessage(username, text);
+  res.redirect("/");
+}
+
 module.exports = {
   getMessages,
+  createMessage,
 };
